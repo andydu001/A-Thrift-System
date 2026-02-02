@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // Source: https://mvnrepository.com/artifact/org.springframework/spring-web
+    implementation 'org.springframework:spring-web:7.0.3'
+    // Source: https://mvnrepository.com/artifact/io.projectreactor/reactor-core
+    implementation 'io.projectreactor:reactor-core:3.8.2'
+    // Source: https://mvnrepository.com/artifact/org.deegree/deegree-services-wms
+   // Source: https://mvnrepository.com/artifact/org.apache.thrift/libthrift
+    implementation 'org.apache.thrift:libthrift:0.20.0'
+
+    // Source: https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
+
+}
+
+test {
+    useJUnitPlatform()
+}
