@@ -8,16 +8,11 @@ import org.apache.thrift.TFieldIdEnum;
 
 import org.apache.thrift.protocol.*;
 
-import javax.management.openmbean.TabularType;
-
-
 public class TbaseZ implements  TBase {
 
     TbaseZ() {
 
     }
-
-    private TFieldIdEnum fiel;
 
 
     @Override
@@ -34,8 +29,6 @@ public class TbaseZ implements  TBase {
 
     @Override
     public Object getFieldValue(TFieldIdEnum field) {
-
-        System.out.println("It's not one"+field);
 
         return null;
     }
