@@ -74,8 +74,6 @@ public class ADServlet extends ProcessFunction{
     @Override
     public TBase getEmptyArgsInstance() {
 
-      //  System.out.println("It's not oneooooooooooooo");
-
         return TbaseZ.getInstance();
     }
 
