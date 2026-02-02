@@ -6,15 +6,14 @@ written by Andy Duverneau
 
 package org.example;
 
-import org.apache.thrift.ProcessFunction;
 import org.apache.thrift.TException;
 
 import org.apache.thrift.TServiceClient;
 
-import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.protocol.TProtocol;
 
 public class TGuide extends TServiceClient {
+
     private String namee;
     public TGuide(TProtocol prot, String name) throws TException {
         super(prot);
