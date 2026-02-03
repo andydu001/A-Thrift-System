@@ -9,8 +9,6 @@ package org.example;
 
 import java.io.*;
 
-import java.util.Scanner;
-
 import java.util.zip.ZipInputStream;
 
 import java.util.zip.ZipOutputStream;
@@ -28,59 +26,12 @@ public class ADStream {
         //Figured the instances
         if(this.inputStream instanceof FileInputStream fileInputStream){
 
-
-
-         /*   Scanner scanner = new Scanner(fileInputStream);
-             while (scanner.hasNextLine()){
-
-                 System.out.println(scanner.nextLine());
-
-             }*/
-
-
-/*            if(fileInputStream.getChannel().isOpen()){
-
-
-                int len =   fileInputStream.readAllBytes().length;
-                System.out.println(len);
-                for (int i = 1; i < len; i++) {
-
-                    System.out.println(fileInputStream.readAllBytes());
-                }
-            }
-            else{
-
-                System.out.println("This channel is not open.");
-            }*/
             System.out.println("---");
 
         } else if ( this.inputStream instanceof DataInputStream dataInputStream) {
 
-            Scanner scanner = new Scanner(dataInputStream);
 
-
-            //  System.out.println(scanner.tokens().sequential().iterator().next().charAt(0));
-/*
-            int lenf = scanner.next().length();
-
-
-            for (int i = 0; i < lenf; i++) {
-                while (scanner.hasNext()) {
-
-                    if (scanner.next().charAt(i) == '[' || scanner.nextLine().charAt(i) == ']' || scanner.nextLine().charAt(i) == ',') {
-
-                        System.out.println("k");
-
-                    }
-                }
-
-
-            }*/
-
-      //  }
-
-
-     } else if (this.inputStream instanceof ZipInputStream zipInputStream){
+        } else if (this.inputStream instanceof ZipInputStream zipInputStream){
 
             System.out.println("---");
 
