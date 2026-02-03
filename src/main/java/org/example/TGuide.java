@@ -10,6 +10,8 @@ import org.apache.thrift.TException;
 
 import org.apache.thrift.TServiceClient;
 
+import org.apache.thrift.protocol.TJSONProtocol;
+
 import org.apache.thrift.protocol.TProtocol;
 
 public class TGuide extends TServiceClient {
@@ -24,6 +26,8 @@ public class TGuide extends TServiceClient {
         TbaseZ tbaseZ = new TbaseZ();
 
         sendBase( this.namee, tbaseZ); //sending protocal
+
+        new ADServlet((TJSONProtocol) prot);
 
         receiveBase(tbaseZ,null); // recieving protocal
     }
