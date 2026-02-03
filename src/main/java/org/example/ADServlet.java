@@ -11,11 +11,10 @@ import org.apache.thrift.protocol.TJSONProtocol;
 public class ADServlet extends ProcessFunction{
 
     ADServlet(TJSONProtocol protocol) throws TException {
+
         super("main");
 
-
-        process(3,protocol,null,null);
-
+        process(0,protocol,null,null);
 
     }
 
@@ -23,13 +22,11 @@ public class ADServlet extends ProcessFunction{
     protected boolean isOneway() {
 
 
-        return false;
+        return true;
     }
 
     @Override
     public TBase getResult(Object iface, TBase args) throws TException {
-
-
 
         return null;
     }
