@@ -7,6 +7,8 @@ import org.apache.thrift.transport.TTransportException;
 public class ADTEND extends TEndpointTransport {
     public ADTEND(TConfiguration config) throws TTransportException {
         super(config);
+
+
     }
 
     @Override

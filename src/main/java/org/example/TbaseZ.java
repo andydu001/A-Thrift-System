@@ -8,6 +8,8 @@ import org.apache.thrift.TFieldIdEnum;
 
 import org.apache.thrift.protocol.*;
 
+import java.util.UUID;
+
 public class TbaseZ implements  TBase {
 
     TbaseZ() {
@@ -52,6 +54,7 @@ public class TbaseZ implements  TBase {
 
     @Override
     public int compareTo(Object o) {
+
         return 0;
     }
 
@@ -59,11 +62,19 @@ public class TbaseZ implements  TBase {
     @Override
     public void write(TProtocol oprot) throws TException {
 
-       oprot.writeStruct(new TStruct("OOO"), new TProtocol.WriteCallback<Void>() {
+/*        oprot.writeFieldBegin(new TField("A",TType.STRING, (short) 0));
+
+        oprot.writeByte((byte) '1');
+
+        oprot.writeUuid(new UUID(0,5));*/
+
+
+        oprot.writeStruct(new TStruct("OOO"), new TProtocol.WriteCallback<Void>() {
 
             @Override
             public void call(Void e) throws TException {
                 // new ADServlet((TJSONProtocol) oprot);
+
 
                 oprot.writeString("test");
 
@@ -77,12 +88,16 @@ public class TbaseZ implements  TBase {
 
         });
 
+
+
+
     }
 
     @Override
     public void read(TProtocol iprot) throws TException {
 
-         System.out.println("I just read a byte:"+iprot.readStruct(new TProtocol.ReadCallback<TStruct, Object>() {
+
+       System.out.println("I just read a byte:"+iprot.readStruct(new TProtocol.ReadCallback<TStruct, Object>() {
             @Override
             public Object accept(TStruct tStruct) throws TException {
 
@@ -90,13 +105,14 @@ public class TbaseZ implements  TBase {
 
                 iprot.readDouble();
 
-                iprot.readString();
+               System.out.println( iprot.readString());
 
                 iprot.readDouble();
 
                 return tStruct;
             }
         }));
+
 
     }
 

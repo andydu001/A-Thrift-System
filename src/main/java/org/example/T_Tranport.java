@@ -18,7 +18,6 @@ import java.util.Arrays;
 
 public class T_Tranport {
 
-
     private static TTransport transport; // field transport
     T_Tranport(TTransport transport) throws TTransportException, IOException {
 
@@ -36,10 +35,6 @@ public class T_Tranport {
 
         } else if (T_Tranport.transport instanceof TSocket tSocket) {
 
-            tSocket.getSocket().getOutputStream();
-
-            System.out.println("Tsocket transport: " + tSocket.isOpen());
-
         }else if (T_Tranport.transport instanceof ADTnon nonblockingTransport) {
 
             td(new ADTnon(new TConfiguration()));
@@ -48,27 +43,13 @@ public class T_Tranport {
 
         } else if (T_Tranport.transport instanceof TSaslClientTransport saslClientTransport) {
 
-
             System.out.println("TSaslc transport: " + saslClientTransport.isOpen());
 
         } else if (T_Tranport.transport instanceof TIOStreamTransport tioStreamTransport) {
 
-
             System.out.println("TIOS transport: " + tioStreamTransport.isOpen());
 
         } else if (T_Tranport.transport instanceof TFramedTransport framedTransport) {
-
-            framedTransport.open();
-
-            byte[] b = {8};
-            //framedTransport.read(ByteBuffer.allocate(10).putDouble(78.9));
-
-            framedTransport.write("Andy Duverneau".getBytes());
-
-            framedTransport.consumeBuffer(7);
-
-            framedTransport.getInnerTransport().write("DAFani".getBytes());
-
 
             System.out.println("Tframe transport: " + Arrays.toString(framedTransport.getBuffer()));
 
@@ -79,7 +60,6 @@ public class T_Tranport {
 
     }
 
-
     public static TTransport getTransport() { // method get a transport
 
         return transport;
@@ -89,7 +69,6 @@ public class T_Tranport {
 
         T_Tranport.transport = transport;
     }
-
 
     void td(TNonblockingTransport tNonblockingTransport) throws IOException {
 

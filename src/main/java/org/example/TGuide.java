@@ -10,24 +10,25 @@ import org.apache.thrift.TException;
 
 import org.apache.thrift.TServiceClient;
 
-import org.apache.thrift.protocol.TJSONProtocol;
-
 import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.protocol.TStruct;
 
 public class TGuide extends TServiceClient {
 
     private String namee;
+
     public TGuide(TProtocol prot, String name) throws TException {
+
         super(prot);
 
         this.namee =name; // field name
-        // ThriftStructProcessor structProcessor = new ThriftStructProcessor();
 
         TbaseZ tbaseZ = new TbaseZ();
 
         sendBase( this.namee, tbaseZ); //sending protocal
 
-        new ADServlet((TJSONProtocol) prot);
+
+        new ADServlet(name);
 
         receiveBase(tbaseZ,null); // recieving protocal
     }

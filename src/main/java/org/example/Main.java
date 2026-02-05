@@ -20,6 +20,7 @@ import org.apache.thrift.transport.TFileTransport;
 
 import org.apache.thrift.transport.TIOStreamTransport;
 
+import org.apache.thrift.transport.TSocket;
 import org.springframework.web.client.RestClient;
 
 import org.springframework.web.util.DefaultUriBuilderFactory;
@@ -27,6 +28,7 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 import java.io.*;
 
 import java.net.URISyntaxException;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws URISyntaxException, IOException, TException {
@@ -68,22 +70,25 @@ public class Main {
         ADStream adStreamOut = new ADStream(new DataOutputStream(new FileOutputStream("C:\\Users\\andyd\\OneDrive\\Documents\\Example.thrift")));
 
 
+        TSocket tSocket = new TSocket("users.cs.umb.edu",22);
+
+        tSocket.open();
+
         TIOStreamTransport tioStreamTransport = new TIOStreamTransport(adStream.getInputStream(), adStreamOut.getOutputStream());//,adStreamOut.getOutputStream());
 
         new T_Tranport(tioStreamTransport);
 
+       TB tjsonProtocol= new TB(T_Tranport.getTransport());//new TBinaryProtocol(new AutoExpandingBufferReadTransport(new TConfiguration(),8));
 
-        TB tjsonProtocol= new TB(T_Tranport.getTransport());//new TBinaryProtocol(new AutoExpandingBufferReadTransport(new TConfiguration(),8));
-
-
-        new TGuide(tjsonProtocol,"A");
-
-
+        tjsonProtocol.getMinSerializedSize(TType.I16);
+        //System.out.println(Arrays.toString(T_Tranport.getTransport().getBuffer()) +"iiiiiiiiiiiii");
+        new TGuide(tjsonProtocol,"Fait");
+     //System.out.println(tjsonProtocol.readString());
         TFileTransport transport =    new TFileTransport("C:\\Users\\andyd\\source\\repos\\ConsoleApplicationCAav\\ConsoleApplicationCAav.cpp",true);
 
         transport.open();
 
-        new HIOZ(new TMultiplexedProcessor(),new TBinaryProtocol.Factory(),transport ,new TIOStreamTransport(new FileOutputStream("C:\\Users\\andyd\\source\\repos\\ConsoleApplicationCAav\\ConsoleApplicationCAav.cpp")));
+        new HIOZ(new TMultiplexedProcessor(),new TBinaryProtocol.Factory(),transport ,T_Tranport.getTransport());
 
     }
 }

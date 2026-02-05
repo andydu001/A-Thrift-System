@@ -6,15 +6,13 @@ import org.apache.thrift.TBase;
 
 import org.apache.thrift.TException;
 
-import org.apache.thrift.protocol.TJSONProtocol;
+
 
 public class ADServlet extends ProcessFunction{
 
-    ADServlet(TJSONProtocol protocol) throws TException {
 
-        super("main");
-
-        process(0,protocol,null,null);
+    public ADServlet(String methodName) {
+        super(methodName);
 
     }
 
@@ -34,7 +32,7 @@ public class ADServlet extends ProcessFunction{
     @Override
     public TBase getEmptyArgsInstance() {
 
-        return TbaseZ.getInstance();
+        return TbaseZ.getInstance().deepCopy();
     }
 
 }
