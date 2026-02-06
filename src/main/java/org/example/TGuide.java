@@ -11,7 +11,8 @@ import org.apache.thrift.TException;
 import org.apache.thrift.TServiceClient;
 
 import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.protocol.TStruct;
+
+
 
 public class TGuide extends TServiceClient {
 
@@ -27,8 +28,8 @@ public class TGuide extends TServiceClient {
 
         sendBase( this.namee, tbaseZ); //sending protocal
 
+        new TbaseAsync(null,null,iprot_,oprot_);
 
-        new ADServlet(name);
 
         receiveBase(tbaseZ,null); // recieving protocal
     }
